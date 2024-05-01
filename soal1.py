@@ -12,7 +12,7 @@ def inverse_matrix(matrix):
 
 
 # Contoh penggunaan
-A = np.array([[1, 2], [3, 4]])
+A = np.array([[1, -1, 2], [3, 0, 1], [1, 0, 2]])
 inverse_A = inverse_matrix(A)
 if inverse_A is not None:
     print("Matriks Balikan (inverse) A:")
