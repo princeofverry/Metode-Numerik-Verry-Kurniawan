@@ -30,7 +30,7 @@ def lu_decomposition_gauss(matrix):
 
 
 # Contoh penggunaan
-A = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])
+A = np.array([[2, -1, -1], [0, -4, 2], [6, -3, 1]])
 L, U = lu_decomposition_gauss(A)
 print("Matriks L:")
 print(L)

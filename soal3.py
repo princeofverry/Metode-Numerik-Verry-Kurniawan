@@ -1,35 +1,40 @@
 import numpy as np
 
-# Fungsi untuk dekomposisi Crout
 
-
-def crout_decomposition(matrix):
-    n = len(matrix)
+def crout_decomposition(A):
+    n = len(A)
     L = np.zeros((n, n))
     U = np.zeros((n, n))
 
-    for i in range(n):
-        U[i][i] = 1
+    for j in range(n):
+        U[j, j] = 1
 
-        for j in range(i, n):
-            sum = 0
-            for k in range(i):
-                sum += L[j][k] * U[k][i]
-            L[j][i] = matrix[j][i] - sum
+        for i in range(j, n):
+            sum_val = sum(L[i, k] * U[k, j] for k in range(i))
+            L[i, j] = A[i, j] - sum_val
 
-        for j in range(i + 1, n):
-            sum = 0
-            for k in range(i):
-                sum += L[i][k] * U[k][j]
-            U[i][j] = (matrix[i][j] - sum) / L[i][i]
+        for i in range(j, n):
+            sum_val = sum(L[j, k] * U[k, i] for k in range(j))
+            if L[j, j] == 0:
+                return None, None  # Matriks tidak bisa didekomposisi
+            U[j, i] = (A[j, i] - sum_val) / L[j, j]
 
     return L, U
 
 
 # Contoh penggunaan
-A = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]])
+A = np.array([[1, 1, -1],
+              [-1, 1, 1],
+              [2, 2, 1]])
+
 L, U = crout_decomposition(A)
-print("Matriks L:")
+print("Matrix L:")
 print(L)
-print("Matriks U:")
+print("Matrix U:")
 print(U)
+
+
+# A = np.array([[1, 1, -1], [-1, 1, 1], [2, 2, 1]])
+
+# seharusnya U[[1, 1, -1], [0, 2, 0], [0, 0, 3]]
+# seharusnya L[[1, 0, 0], [-1, 1, 0], [2, 0, 1]]

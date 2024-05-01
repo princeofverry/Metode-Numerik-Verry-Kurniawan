@@ -15,7 +15,7 @@ def inverse_matrix(matrix):
 A = np.array([[1, 2], [3, 4]])
 inverse_A = inverse_matrix(A)
 if inverse_A is not None:
-    print("Matriks Balikan A:")
+    print("Matriks Balikan (inverse) A:")
     print(inverse_A)
 else:
-    print("Matriks A tidak memiliki balikan.")
+    print("Matriks A tidak memiliki balikan (inverse).")
