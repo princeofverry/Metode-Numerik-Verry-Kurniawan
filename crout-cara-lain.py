@@ -1,4 +1,5 @@
 import numpy as np
+import unittest
 
 
 def forward_substitution(L, b):
@@ -117,3 +118,30 @@ b = np.array([1.0, 5.0, 1.0])
 # Menggunakan metode Crout untuk mendapatkan solusi sistem persamaan linier
 print("\n" + "Solusi menggunakan algoritma Crout:" + "\n")
 print("x = " + str(computing_final_solution(A, b, crout)) + "\n")
+
+# acuannya pada source https://clnazalia.wordpress.com/2018/10/27/sistem-persamaan-linier-metode-dekomposisi/
+
+# unit test
+
+
+class TestLinearSystemSolver(unittest.TestCase):
+
+    def test_computing_final_solution_with_crout(self):
+        # Define the matrix A and vector b
+        A = np.matrix([[1, 1, -1],
+                      [-1, 1, 1],
+                      [2, 2, 1]])
+        b = np.array([1.0, 5.0, 1.0])
+
+        # Expected solution
+        expected_solution = np.array([-2.33333333, 3., -0.33333333])
+
+        # Compute the solution using Crout method
+        computed_solution = computing_final_solution(A, b, crout)
+
+        # Check if the computed solution matches the expected solution
+        np.testing.assert_allclose(computed_solution, expected_solution)
+
+
+if __name__ == '__main__':
+    unittest.main()

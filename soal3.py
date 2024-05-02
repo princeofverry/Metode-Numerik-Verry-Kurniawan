@@ -24,9 +24,10 @@ def crout_decomposition(A):
 
 
 # Contoh penggunaan
-A = np.array([[1, 1, -1],
-              [-1, 1, 1],
-              [2, 2, 1]])
+A = np.array([[2, 4, 3],
+              [3, 5, 2],
+              [4, 6, 3]])
+
 
 L, U = crout_decomposition(A)
 print("Matrix L:")
