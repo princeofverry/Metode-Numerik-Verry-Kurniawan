@@ -13,3 +13,4 @@ python soal3-another-solution.py
 
 - [@princeofverry](https://www.github.com/princeofverry)
 - source lain: stackoverflow
+- acuannya pada source https://clnazalia.wordpress.com/2018/10/27/sistem-persamaan-linier-metode-dekomposisi/
