@@ -1,6 +1,5 @@
+import unittest
 import numpy as np
-
-# Fungsi untuk dekomposisi LU menggunakan algoritma Gauss
 
 
 def lu_decomposition_gauss(matrix):
@@ -36,3 +35,17 @@ print("Matriks L:")
 print(L)
 print("Matriks U:")
 print(U)
+
+
+class TestLUDecomposition(unittest.TestCase):
+    def test_decomposition(self):
+        A = np.array([[2, -1, -1], [0, -4, 2], [6, -3, 1]])
+        expected_L = np.array([[1., 0., 0.], [0., 1., 0.], [3., 0., 1.]])
+        expected_U = np.array([[2., -1., -1.], [0., -4., 2.], [0., 0., 4.]])
+        L, U = lu_decomposition_gauss(A)
+        np.testing.assert_array_almost_equal(L, expected_L)
+        np.testing.assert_array_almost_equal(U, expected_U)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,4 +1,5 @@
 import numpy as np
+import unittest
 
 
 def crout_decomposition(A):
@@ -38,3 +39,24 @@ print(U)
 
 # seharusnya U[[1, 1, -1], [0, 2, 0], [0, 0, 3]]
 # seharusnya L[[1, 0, 0], [-1, 1, 0], [2, 0, 1]]
+
+class TestCroutDecomposition(unittest.TestCase):
+    def test_decomposition(self):
+        A = np.array([[2, 4, 3],
+                      [3, 5, 2],
+                      [4, 6, 3]])
+        expected_L = np.array([[2, 0, 0],
+                               [3, -1, 0],
+                               [4, -2, 2]])
+        expected_U = np.array([[1, 2, 1.5],
+                               [0, 1, 2.5],
+                               [0, 0, 1]])
+        L, U = crout_decomposition(A)
+        np.testing.assert_array_almost_equal(L, expected_L)
+        np.testing.assert_array_almost_equal(U, expected_U)
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+# acuannya pada source https://clnazalia.wordpress.com/2018/10/27/sistem-persamaan-linier-metode-dekomposisi/
